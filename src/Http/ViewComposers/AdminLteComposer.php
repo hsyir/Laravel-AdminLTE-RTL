@@ -3,7 +3,7 @@
 namespace Hsy\LaravelAdminLte\Http\ViewComposers;
 
 use Illuminate\View\View;
-use JeroenNoten\LaravelAdminLte\AdminLte;
+use Hsy\LaravelAdminLte\AdminLte;
 
 class AdminLteComposer
 {

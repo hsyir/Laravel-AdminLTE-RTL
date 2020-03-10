@@ -58,7 +58,7 @@ This version supports Laravel 6 and included AdminLTE v2
 1. Require the package using composer:
 
     ```
-    composer require jeroennoten/laravel-adminlte
+    composer require hsyir/laravel-adminlte
     ```
 
 2. Install the package using the command (For fresh laravel installations):
@@ -78,7 +78,7 @@ This version supports Laravel 6 and included AdminLTE v2
 1. To update this package, first update the composer package:
 
     ```
-    composer update jeroennoten/laravel-adminlte
+    composer update hsyir/laravel-adminlte
     ```
 
 2. Then, we need to update the assets
