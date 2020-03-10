@@ -398,10 +398,13 @@ class AdminLteInstallCommand extends Command
 
     protected function copyRtlAssets()
     {
-        $assets_path=__DIR__ . "/../../resources/assets/css";
-        $public_path=public_path("vendor/adminlte/dist/css");
+        $assets_path=__DIR__ . "/../../resources/assets";
+        $public_path=public_path("vendor/adminlte/dist");
         CommandHelper::directoryCopy(
-            $assets_path,$public_path,true
+            $assets_path."/css",$public_path."/css",true
+        );
+        CommandHelper::directoryCopy(
+            $assets_path."/fonts",$public_path."/fonts",true
         );
     }
 }

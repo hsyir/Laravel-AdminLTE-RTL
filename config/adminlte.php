@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'زودنیوز - مدیر                      ',
+    'title' => 'پنل مدیر',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => 'پنل مدیر زودنیوز',
+    'logo' => 'پنل مدیر',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
