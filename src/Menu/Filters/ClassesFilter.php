@@ -1,8 +1,8 @@
 <?php
 
-namespace JeroenNoten\LaravelAdminLte\Menu\Filters;
+namespace Hsy\LaravelAdminLte\Menu\Filters;
 
-use JeroenNoten\LaravelAdminLte\Menu\Builder;
+use Hsy\LaravelAdminLte\Menu\Builder;
 
 class ClassesFilter implements FilterInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace JeroenNoten\LaravelAdminLte\Http\ViewComposers;
+namespace Hsy\LaravelAdminLte\Http\ViewComposers;
 
 use Illuminate\View\View;
 use JeroenNoten\LaravelAdminLte\AdminLte;

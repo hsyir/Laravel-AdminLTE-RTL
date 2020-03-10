@@ -1,9 +1,9 @@
 <?php
 
-namespace JeroenNoten\LaravelAdminLte\Menu\Filters;
+namespace Hsy\LaravelAdminLte\Menu\Filters;
 
 use Illuminate\Translation\Translator;
-use JeroenNoten\LaravelAdminLte\Menu\Builder;
+use Hsy\LaravelAdminLte\Menu\Builder;
 
 class LangFilter implements FilterInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use Hsy\LaravelAdminLte\Events\BuildingMenu;
 
 class AdminLteTest extends TestCase
 {

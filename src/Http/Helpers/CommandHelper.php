@@ -1,6 +1,6 @@
 <?php
 
-namespace JeroenNoten\LaravelAdminLte\Http\Helpers;
+namespace Hsy\LaravelAdminLte\Http\Helpers;
 
 class CommandHelper
 {

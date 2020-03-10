@@ -1,9 +1,9 @@
 <?php
 
-namespace JeroenNoten\LaravelAdminLte\Console;
+namespace Hsy\LaravelAdminLte\Console;
 
 use Illuminate\Console\Command;
-use JeroenNoten\LaravelAdminLte\Http\Helpers\CommandHelper;
+use Hsy\LaravelAdminLte\Http\Helpers\CommandHelper;
 
 class AdminLteStatusCommand extends Command
 {
