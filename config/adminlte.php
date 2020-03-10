@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3 RTL',
+    'title' => 'زودنیوز - مدیر                      ',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'پنل مدیر زودنیوز',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -149,7 +149,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -189,8 +189,12 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
+            'text' => 'جستجو',
             'search' => true,
+            'topnav' => true,
+        ],
+        [
+            'text' => 'جستجو',
             'topnav' => true,
         ],
         [
@@ -199,37 +203,35 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'مالی',
+            'url'         => 'admin/acc',
+            'icon'        => 'far fa-fw fa-bill',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'تنظیمات عمومی'],
         [
-            'text' => 'profile',
+            'text' => 'پروفایل کاربر',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'تغییر رمز',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'تو در تو',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'سطح یک',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'سطح یک',
                     'url'     => '#',
                     'submenu' => [
                         [
-                            'text' => 'level_two',
+                            'text' => 'سطح دو',
                             'url'  => '#',
                         ],
                         [
@@ -254,17 +256,17 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'برچسب ها'],
         [
-            'text'       => 'important',
+            'text'       => 'مهم',
             'icon_color' => 'red',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'اخطار',
             'icon_color' => 'yellow',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'اطلاعات',
             'icon_color' => 'aqua',
         ],
     ],

@@ -17,6 +17,10 @@
     @yield('adminlte_css_pre')
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/custom.css') }}">
+
+
 
     @yield('adminlte_css')
 

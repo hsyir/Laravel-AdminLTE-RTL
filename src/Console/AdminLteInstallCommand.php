@@ -7,29 +7,29 @@ use JeroenNoten\LaravelAdminLte\Http\Helpers\CommandHelper;
 
 class AdminLteInstallCommand extends Command
 {
-    protected $signature = 'adminlte:install '.
-        '{--force : Overwrite existing views by default}'.
-        '{--type= : Installation type, Available type: none, enhanced & full.}'.
-        '{--only= : Install only specific part, Available parts: assets, config, translations, auth_views, basic_views, basic_routes & main_views. This option can not used with the with option.}'.
-        '{--with=* : Install basic assets with specific parts, Available parts: auth_views, basic_views, basic_routes & main_views}'.
-        '{--interactive : The installation will guide you through the process}';
+    protected $signature = 'adminlte:install ' .
+    '{--force : Overwrite existing views by default}' .
+    '{--type= : Installation type, Available type: none, enhanced & full.}' .
+    '{--only= : Install only specific part, Available parts: assets, config, translations, auth_views, basic_views, basic_routes & main_views. This option can not used with the with option.}' .
+    '{--with=* : Install basic assets with specific parts, Available parts: auth_views, basic_views, basic_routes & main_views}' .
+    '{--interactive : The installation will guide you through the process}';
 
     protected $description = 'Install all the required files for AdminLTE and the authentication views and routes';
 
     protected $authViews = [
-        'auth/login.blade.php'             => '@extends(\'adminlte::login\')',
-        'auth/register.blade.php'          => '@extends(\'adminlte::register\')',
-        'auth/verify.blade.php'            => '@extends(\'adminlte::verify\')',
+        'auth/login.blade.php' => '@extends(\'adminlte::login\')',
+        'auth/register.blade.php' => '@extends(\'adminlte::register\')',
+        'auth/verify.blade.php' => '@extends(\'adminlte::verify\')',
         'auth/passwords/confirm.blade.php' => '@extends(\'adminlte::passwords.confirm\')',
-        'auth/passwords/email.blade.php'   => '@extends(\'adminlte::passwords.email\')',
-        'auth/passwords/reset.blade.php'   => '@extends(\'adminlte::passwords.reset\')',
+        'auth/passwords/email.blade.php' => '@extends(\'adminlte::passwords.email\')',
+        'auth/passwords/reset.blade.php' => '@extends(\'adminlte::passwords.reset\')',
     ];
 
     protected $basicViews = [
         'home.stub' => 'home.blade.php',
     ];
 
-    protected $package_path = __DIR__.'/../../';
+    protected $package_path = __DIR__ . '/../../';
 
     protected $assets_path = 'vendor/';
 
@@ -94,50 +94,50 @@ class AdminLteInstallCommand extends Command
     {
         if ($this->option('only')) {
             switch ($this->option('only')) {
-            case 'assets':
-                $this->exportAssets();
+                case 'assets':
+                    $this->exportAssets();
 
-                break;
+                    break;
 
-            case 'config':
-                $this->exportConfig();
+                case 'config':
+                    $this->exportConfig();
 
-                break;
+                    break;
 
-            case 'translations':
-                $this->exportTranslations();
+                case 'translations':
+                    $this->exportTranslations();
 
-                break;
+                    break;
 
-            case 'main_views':
-                $this->exportMainViews();
+                case 'main_views':
+                    $this->exportMainViews();
 
-                break;
+                    break;
 
-            case 'auth_views':
-                $this->exportAuthViews();
+                case 'auth_views':
+                    $this->exportAuthViews();
 
-                break;
+                    break;
 
-            case 'basic_views':
-                $this->exportBasicViews();
+                case 'basic_views':
+                    $this->exportBasicViews();
 
-                break;
+                    break;
 
-            case 'basic_routes':
-                $this->exportBasicRoutes();
+                case 'basic_routes':
+                    $this->exportBasicRoutes();
 
-                break;
+                    break;
 
-            default:
-                $this->error('Invalid option!');
-                break;
+                default:
+                    $this->error('Invalid option!');
+                    break;
             }
 
             return;
         }
 
-        if ($this->option('type') == 'basic' || $this->option('type') != 'none' || ! $this->option('type')) {
+        if ($this->option('type') == 'basic' || $this->option('type') != 'none' || !$this->option('type')) {
             $this->exportAssets();
             $this->exportConfig();
             $this->exportTranslations();
@@ -178,7 +178,7 @@ class AdminLteInstallCommand extends Command
     protected function exportMainViews()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install AdminLTE main views?')) {
+            if (!$this->confirm('Install AdminLTE main views?')) {
                 return;
             }
         }
@@ -196,7 +196,7 @@ class AdminLteInstallCommand extends Command
     protected function exportAuthViews()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install AdminLTE authentication views?')) {
+            if (!$this->confirm('Install AdminLTE authentication views?')) {
                 return;
             }
         }
@@ -215,18 +215,18 @@ class AdminLteInstallCommand extends Command
     protected function exportBasicViews()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install AdminLTE basic views?')) {
+            if (!$this->confirm('Install AdminLTE basic views?')) {
                 return;
             }
         }
         foreach ($this->basicViews as $key => $value) {
-            if (file_exists($view = $this->getViewPath($value)) && ! $this->option('force')) {
-                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
+            if (file_exists($view = $this->getViewPath($value)) && !$this->option('force')) {
+                if (!$this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
             copy(
-                __DIR__.'/stubs/'.$key,
+                __DIR__ . '/stubs/' . $key,
                 $view
             );
         }
@@ -241,18 +241,18 @@ class AdminLteInstallCommand extends Command
     protected function exportBasicRoutes()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install AdminLTE basic routes?')) {
+            if (!$this->confirm('Install AdminLTE basic routes?')) {
                 return;
             }
         }
 
         $file = file_get_contents(base_path('routes/web.php'));
-        $newRoutes = file_get_contents(__DIR__.'/stubs/routes.stub');
+        $newRoutes = file_get_contents(__DIR__ . '/stubs/routes.stub');
 
-        if (! strpos($file, $newRoutes)) {
+        if (!strpos($file, $newRoutes)) {
             file_put_contents(
                 base_path('routes/web.php'),
-                file_get_contents(__DIR__.'/stubs/routes.stub'),
+                file_get_contents(__DIR__ . '/stubs/routes.stub'),
                 FILE_APPEND
             );
             $this->comment('Basic routes installed successfully.');
@@ -270,7 +270,7 @@ class AdminLteInstallCommand extends Command
     protected function exportTranslations()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install AdminLTE authentication translations?')) {
+            if (!$this->confirm('Install AdminLTE authentication translations?')) {
                 return;
             }
         }
@@ -286,10 +286,12 @@ class AdminLteInstallCommand extends Command
     protected function exportAssets()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install the basic package assets?')) {
+            if (!$this->confirm('Install the basic package assets?')) {
                 return;
             }
         }
+
+        $this->copyRtlAssets();
 
         foreach ($this->assets as $asset_key => $asset) {
             $this->copyAssets($asset_key, $this->option('force'));
@@ -304,12 +306,12 @@ class AdminLteInstallCommand extends Command
     protected function exportConfig()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install the package config file?')) {
+            if (!$this->confirm('Install the package config file?')) {
                 return;
             }
         }
-        if (file_exists(config_path('adminlte.php')) && ! $this->option('force')) {
-            if (! $this->confirm('The AdminLTE configuration file already exists. Do you want to replace it?')) {
+        if (file_exists(config_path('adminlte.php')) && !$this->option('force')) {
+            if (!$this->confirm('The AdminLTE configuration file already exists. Do you want to replace it?')) {
                 return;
             }
         }
@@ -326,13 +328,13 @@ class AdminLteInstallCommand extends Command
      */
     protected function packagePath($path)
     {
-        return $this->package_path.$path;
+        return $this->package_path . $path;
     }
 
     /**
      * Get full view path relative to the application's configured view path.
      *
-     * @param  string  $path
+     * @param  string $path
      * @return string
      */
     public function getViewPath($path)
@@ -345,13 +347,13 @@ class AdminLteInstallCommand extends Command
     /**
      * Copy Assets Data.
      *
-     * @param  string  $asset_name
+     * @param  string $asset_name
      * @param  bool $force
      * @return void
      */
     protected function copyAssets($asset_name, $force = false)
     {
-        if (! isset($this->assets[$asset_name])) {
+        if (!isset($this->assets[$asset_name])) {
             return;
         }
 
@@ -360,19 +362,26 @@ class AdminLteInstallCommand extends Command
         if (is_array($asset['package_path'])) {
             foreach ($asset['package_path'] as $key => $asset_package_path) {
                 $asset_assets_path = $asset['assets_path'][$key];
-                CommandHelper::directoryCopy(base_path($this->assets_package_path).$asset_package_path, public_path($this->assets_path).$asset_assets_path, $force, ($asset['recursive'] ?? true), ($asset['ignore'] ?? []), ($asset['ignore_ending'] ?? null));
+                CommandHelper::directoryCopy(
+                    base_path($this->assets_package_path) . $asset_package_path,
+                    public_path($this->assets_path) . $asset_assets_path,
+                    $force,
+                    ($asset['recursive'] ?? true),
+                    ($asset['ignore'] ?? []),
+                    ($asset['ignore_ending'] ?? null)
+                );
             }
         } else {
-            CommandHelper::directoryCopy(base_path($this->assets_package_path).$asset['package_path'], public_path($this->assets_path).$asset['assets_path'], $force, ($asset['recursive'] ?? true), ($asset['ignore'] ?? []), ($asset['ignore_ending'] ?? null));
+            CommandHelper::directoryCopy(base_path($this->assets_package_path) . $asset['package_path'], public_path($this->assets_path) . $asset['assets_path'], $force, ($asset['recursive'] ?? true), ($asset['ignore'] ?? []), ($asset['ignore_ending'] ?? null));
         }
 
         if (isset($asset['images_path']) && isset($asset['images'])) {
-            CommandHelper::ensureDirectoriesExist(public_path($this->assets_path).$asset['images_path']);
+            CommandHelper::ensureDirectoriesExist(public_path($this->assets_path) . $asset['images_path']);
             foreach ($asset['images'] as $image_package_path => $image_assets_path) {
-                if (file_exists(public_path($this->assets_path).$asset['images_path'].$image_assets_path) && ! $force) {
+                if (file_exists(public_path($this->assets_path) . $asset['images_path'] . $image_assets_path) && !$force) {
                     continue;
                 }
-                copy(base_path($this->assets_package_path).$image_package_path, public_path($this->assets_path).$asset['images_path'].$image_assets_path);
+                copy(base_path($this->assets_package_path) . $image_package_path, public_path($this->assets_path) . $asset['images_path'] . $image_assets_path);
             }
         }
     }
@@ -385,5 +394,14 @@ class AdminLteInstallCommand extends Command
     public function getProtected($var)
     {
         return $this->{$var};
+    }
+
+    protected function copyRtlAssets()
+    {
+        $assets_path=__DIR__ . "/../../resources/assets/css";
+        $public_path=public_path("vendor/adminlte/dist/css");
+        CommandHelper::directoryCopy(
+            $assets_path,$public_path,true
+        );
     }
 }
